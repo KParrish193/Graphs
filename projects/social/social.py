@@ -1,5 +1,7 @@
 import random
-# from utils import Queue
+import sys
+sys.path.append('../graph')
+from util import Queue
 
 class User:
     def __init__(self, name):

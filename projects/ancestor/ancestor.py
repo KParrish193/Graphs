@@ -1,5 +1,5 @@
-# import sys
-# sys.path.append('../graph')
+import sys
+sys.path.append('../graph')
 from graph import Graph
 
 # return furthest ancestor
