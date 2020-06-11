@@ -1,5 +1,5 @@
 import random
-from utils import Queue
+# from utils import Queue
 
 class User:
     def __init__(self, name):
@@ -100,7 +100,7 @@ class SocialGraph:
 
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populate_graph(10, 2)
+    sg.populate_graph(100, 5)
     print('friendships: ', sg.friendships)
     connections = sg.get_all_social_paths(1)
     print('connections: ', connections)
@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
 
 # 3
-# count keys, -1 to remove 
+# count keys, -1 to remove self
 
 users_in_ext_network = len(connections) - 1
 total_users = len(sg.users)
