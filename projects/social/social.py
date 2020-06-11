@@ -1,4 +1,5 @@
 import random
+from utils import Queue
 
 class User:
     def __init__(self, name):
@@ -79,12 +80,37 @@ class SocialGraph:
         """
         visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
+        q = Queue()
+
+        # start with path to desired user
+        q.enqueue([user_id])
+        while q.size() > 0:
+            
+            path = q.dequeue()
+            curr_vert = path[-1]
+
+            if curr_vert not in visited:
+                visited[curr_vert] = path 
+
+                for nbr_verts in self.friendships[curr_vert]:
+                    q.enqueue(path + [nbr_verts])
+        
         return visited
 
 
 if __name__ == '__main__':
     sg = SocialGraph()
     sg.populate_graph(10, 2)
-    print(sg.friendships)
+    print('friendships: ', sg.friendships)
     connections = sg.get_all_social_paths(1)
-    print(connections)
+    print('connections: ', connections)
+
+
+
+# 3
+# count keys, -1 to remove 
+
+users_in_ext_network = len(connections) - 1
+total_users = len(sg.users)
+
+print(f'Percentage: {users_in_ext_network / total_users * 100:.2f}')
